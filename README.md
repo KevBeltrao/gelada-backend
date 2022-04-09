@@ -15,13 +15,17 @@ API made with NestJS, TypeScript and MongoDB.
 - [FigJam](https://www.figma.com/file/NWOAZkxsBqd6wczWCMSAOP/Engenharia-de-Software?node-id=0%3A1)
 
 ## Requirements ⚙️
-- [Yarn](https://yarnpkg.com/)
+- [](https://yarnpkg.com/)
 - [Node.js](https://nodejs.org/en/)
   
 ## Installation ⬇️
 ```bash
+# Install dependencies
 
 $ yarn
+
+# Install husky
+$ yarn husky install
 
 ```
 
