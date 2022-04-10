@@ -25,8 +25,8 @@ describe('UsersController', () => {
 
   it('should call service', () => {
     const user: CreateUserDto = {
-      name: 'Example',
-      email: 'asd@gmail.com',
+      name: 'John Doe',
+      email: 'john.doe@gmail.com',
       phone: '81912341234',
       password: 'Test!234',
     };
