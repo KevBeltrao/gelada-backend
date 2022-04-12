@@ -1,10 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { CreateUserDto } from './dtos/create-user.dto';
-import { UsersRepository } from './users-repository';
-import { UsersService } from './users.service';
+import { CreateUserDto } from '../dtos/create-user.dto';
+import { UsersRepository } from '../users-repository';
+import { UsersService } from '../users.service';
 
-jest.mock('./users-repository.ts');
+jest.mock('../users-repository.ts');
 
 describe('UsersService', () => {
   let service: UsersService;

@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CreateUserDto } from './dtos/create-user.dto';
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
+import { CreateUserDto } from '../dtos/create-user.dto';
+import { UsersController } from '../users.controller';
+import { UsersService } from '../users.service';
 
-jest.mock('./users.service');
+jest.mock('../users.service');
 
 describe('UsersController', () => {
   let controller: UsersController;

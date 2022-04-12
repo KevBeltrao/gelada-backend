@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MongooseModule } from '@nestjs/mongoose';
 
-import { UsersRepository } from './users-repository';
-import { UserSchema } from './interfaces/user.schema';
+import { UsersRepository } from '../users-repository';
+import { UserSchema } from '../interfaces/user.schema';
 import {
   rootDatabaseTestModule,
   closeInDatabaseConnection,
-} from '../test-utils/database/database-test-module';
+} from '../../test-utils/database/database-test-module';
 
 describe('UsersRepository', () => {
   let provider: UsersRepository;
@@ -43,7 +43,7 @@ describe('UsersRepository', () => {
     expect(newUser._id).toBeTruthy();
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await closeInDatabaseConnection();
   });
 });
