@@ -9,7 +9,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @Post('/users')
+  @Post()
   public async create(
     @Body(new CreateUserPipe()) userData: CreateUserDto,
   ): Promise<User> {
