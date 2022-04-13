@@ -94,7 +94,7 @@ $ yarn test:cov
 
 ```
 
-## Contribute
+## Contribute 🤝
 ### Branches
 Pull requests should be composed of type and branch name.\
 Branch name must be spaced by "-".\
@@ -123,7 +123,7 @@ The three main topics of the description are:
 Of course it's not mandatory, sometimes it won't make sense to add some of these.\
 But add descriptive PRs with pictures and referencing code when needed.
 
-### Methodology
+## Methodology 🚀
 Based on SCRUM, we're having 1 week sprints with sprint planning, sprint retrospective, sprint review and dailies.
 
 We're using Github's projects as a Kanban board for the project and Trello to manage other stuff related to the discipline.
