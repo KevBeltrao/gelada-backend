@@ -1,0 +1,14 @@
+version: "3.9"
+
+services:
+  api:
+    image: gelada-api
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      MONGO_URI: ${MONGO_URI}
+      NODE_ENV: production
+      PORT: 3000
+    ports:
+      - "3000:3000"
