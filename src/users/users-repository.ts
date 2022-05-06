@@ -9,6 +9,11 @@ import { CreateUserDto } from './dtos/create-user.dto';
 export class UsersRepository {
   constructor(@InjectModel('User') private readonly userModel: Model<User>) {}
 
+  async listUsers(): Promise<User[]> {
+    const users = await this.userModel.find();
+    return users;
+  }
+
   async createUser(userData: CreateUserDto): Promise<User> {
     const newUser = new this.userModel(userData);
     return await newUser.save();
