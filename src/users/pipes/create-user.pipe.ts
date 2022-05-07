@@ -12,10 +12,20 @@ export class CreateUserPipe
 {
   transform(value: CreateUserDto): CreateUserDto {
     const schema = Joi.object({
-      name: Joi.string().required(),
-      email: Joi.string().email().required(),
-      phone: Joi.string().min(8).max(20),
-      password: Joi.string().regex(PASSWORD_REGEX).required(),
+      name: Joi.string().required().label('name'),
+      email: Joi.string().email().required().label('email'),
+      phone: Joi.string().min(12).max(20).label('phone'),
+      password: Joi.string()
+        .min(8)
+        .regex(PASSWORD_REGEX)
+        .required()
+        .messages({
+          'string.min': 'Must have at least 8 characters',
+          'object.regex': 'Must have at least 8 characters',
+          'string.pattern.base':
+            'Minimum 8 characters, uppercase and lowercase, numbers and special characters',
+        })
+        .label('password'),
     });
 
     const { error } = schema.validate(value);
@@ -24,9 +34,11 @@ export class CreateUserPipe
       throw new BadRequestException('Validation failed');
     }
 
+    const phoneOnlyDigits = value.phone.replace(/\D/g, '');
+
     return {
       ...value,
-      phone: value.phone.replace(/\D/g, ''),
+      phone: `+${phoneOnlyDigits}`,
     };
   }
 }

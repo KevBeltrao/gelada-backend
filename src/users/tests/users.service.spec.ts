@@ -1,22 +1,27 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
+import { AwsCognitoService } from '../../aws/aws-cognito.service';
 import { CreateUserDto } from '../dtos/create-user.dto';
-import { UsersRepository } from '../users-repository';
+// import { UsersRepository } from '../users-repository';
 import { UsersService } from '../users.service';
 
 jest.mock('../users-repository.ts');
+jest.mock('../../aws/aws-cognito.service.ts');
 
 describe('UsersService', () => {
   let service: UsersService;
-  let repository: UsersRepository;
+  // let repository: UsersRepository;
+  let awsCognitoService: AwsCognitoService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [UsersService, UsersRepository],
+      imports: [AwsCognitoService],
+      providers: [UsersService /*, UsersRepository*/],
     }).compile();
 
     service = module.get<UsersService>(UsersService);
-    repository = module.get<UsersRepository>(UsersRepository);
+    // repository = module.get<UsersRepository>(UsersRepository);
+    awsCognitoService = module.get<AwsCognitoService>(AwsCognitoService);
   });
 
   it('should be defined', () => {
@@ -31,8 +36,8 @@ describe('UsersService', () => {
       password: 'Test!234',
     };
 
-    service.createUser(user);
+    awsCognitoService.registerUser(user);
 
-    expect(repository.createUser).toHaveBeenCalled();
+    expect(awsCognitoService.registerUser).toHaveBeenCalled();
   });
 });

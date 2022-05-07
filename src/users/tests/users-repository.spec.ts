@@ -40,7 +40,6 @@ describe('UsersRepository', () => {
     expect(newUser.name).toBe(userData.name);
     expect(newUser.phone).toBe(userData.phone);
     expect(newUser.email).toBe(userData.email);
-    expect(newUser._id).toBeTruthy();
   });
 
   afterEach(async () => {
