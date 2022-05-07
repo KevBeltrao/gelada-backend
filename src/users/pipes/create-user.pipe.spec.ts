@@ -26,12 +26,12 @@ describe('CreateUserPipe', () => {
 
     const newUserRequest = {
       ...newUserBase,
-      phone: '(81) 91234-1234',
+      phone: '55 (81) 91234-1234',
     };
 
     const newUser = {
       ...newUserBase,
-      phone: '81912341234',
+      phone: '+5581912341234',
     };
 
     const parsedUser = transformer.transform(newUserRequest, {});

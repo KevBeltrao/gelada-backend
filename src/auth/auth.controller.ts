@@ -9,7 +9,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('login')
-  async create(@Body() loginDto: LoginDto): Promise<CognitoUserSession> {
+  async login(@Body() loginDto: LoginDto): Promise<CognitoUserSession> {
     return this.authService.login(loginDto);
   }
 

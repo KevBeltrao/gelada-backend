@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CognitoUserSession } from 'amazon-cognito-identity-js';
 import { AwsCognitoService } from '../aws/aws-cognito.service';
 import { ConfirmRegistrationDto } from './dtos/confirm-registration.dto';
@@ -9,12 +9,20 @@ export class AuthService {
   constructor(private awsCognitoService: AwsCognitoService) {}
 
   async login(loginDto: LoginDto): Promise<CognitoUserSession> {
-    return this.awsCognitoService.login(loginDto);
+    try {
+      return this.awsCognitoService.login(loginDto);
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
   }
 
   async confirmRegistration(
     confirmRegistrationDto: ConfirmRegistrationDto,
   ): Promise<void> {
-    return this.awsCognitoService.confirmRegistration(confirmRegistrationDto);
+    try {
+      return this.awsCognitoService.confirmRegistration(confirmRegistrationDto);
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
   }
 }

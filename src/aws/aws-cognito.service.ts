@@ -46,9 +46,9 @@ export class AwsCognitoService {
         (error, result) => {
           if (!result) {
             reject(error);
+          } else {
+            resolve(result.user);
           }
-
-          resolve(result.user);
         },
       );
     });

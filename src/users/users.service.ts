@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CognitoUser } from 'amazon-cognito-identity-js';
 import { AwsCognitoService } from '../aws/aws-cognito.service';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -13,10 +13,18 @@ export class UsersService {
   ) {}
 
   async listUsers(): Promise<User[]> {
-    return await this.usersRepository.listUsers();
+    try {
+      return await this.usersRepository.listUsers();
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
   }
 
   async createUser(userData: CreateUserDto): Promise<CognitoUser> {
-    return await this.awsCognitoService.registerUser(userData);
+    try {
+      return await this.awsCognitoService.registerUser(userData);
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
   }
 }
