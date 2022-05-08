@@ -12,11 +12,6 @@ export const UserSchema = new mongoose.Schema(
       required: true,
     },
     phone: String,
-    password: {
-      type: String,
-      required: true,
-      select: false,
-    },
   },
   {
     timestamps: true,

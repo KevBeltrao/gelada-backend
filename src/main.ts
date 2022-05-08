@@ -10,7 +10,7 @@ async function bootstrap() {
     .setDescription("Gealada's RESTful API documentation")
     .setVersion('1.0.0')
     .addBearerAuth(
-      { type: 'http', scheme: 'bearer', bearerFormat: 'Token' },
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT', in: 'header' },
       'access-token',
     )
     .build();

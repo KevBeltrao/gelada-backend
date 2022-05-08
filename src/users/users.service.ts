@@ -1,5 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { CognitoUser } from 'amazon-cognito-identity-js';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { AwsCognitoService } from '../aws/aws-cognito.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { User } from './interfaces/user.interface';
@@ -20,9 +23,26 @@ export class UsersService {
     }
   }
 
-  async createUser(userData: CreateUserDto): Promise<CognitoUser> {
+  async createUser(userData: CreateUserDto): Promise<User> {
     try {
-      return await this.awsCognitoService.registerUser(userData);
+      await this.awsCognitoService.registerUser(userData);
+      const newUser = await this.usersRepository.createUser(userData);
+
+      return newUser;
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
+  }
+
+  async detailUser(email: string): Promise<User> {
+    try {
+      const user = await this.usersRepository.getUserByEmail(email);
+
+      if (!user) {
+        throw new NotFoundException();
+      }
+
+      return user;
     } catch (error) {
       throw new BadRequestException(error);
     }

@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import {
   AuthenticationDetails,
   CognitoUser,
@@ -11,15 +10,16 @@ import {
 import { CreateUserDto } from '../users/dtos/create-user.dto';
 import { LoginDto } from '../auth/dtos/login.dto';
 import { ConfirmRegistrationDto } from '../auth/dtos/confirm-registration.dto';
+import { AwsCognitoConfig } from './aws-cognito.config';
 
 @Injectable()
 export class AwsCognitoService {
   private userPool: CognitoUserPool;
 
-  constructor(private configService: ConfigService) {
+  constructor(private authConfig: AwsCognitoConfig) {
     this.userPool = new CognitoUserPool({
-      UserPoolId: this.configService.get<string>('COGNITO_USER_POOL_ID'),
-      ClientId: this.configService.get<string>('COGNITO_CLIENT_ID'),
+      UserPoolId: this.authConfig.userPoolId,
+      ClientId: this.authConfig.clientId,
     });
   }
 
@@ -93,9 +93,9 @@ export class AwsCognitoService {
       cognitoUser.confirmRegistration(code, true, (error, result) => {
         if (error) {
           reject(error);
+        } else {
+          resolve(result);
         }
-
-        resolve(result);
       });
     });
   }

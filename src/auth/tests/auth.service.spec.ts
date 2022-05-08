@@ -4,6 +4,7 @@ import { AwsModule } from '../../aws/aws.module';
 import { AuthService } from '../auth.service';
 import { ConfirmRegistrationDto } from '../dtos/confirm-registration.dto';
 import { LoginDto } from '../dtos/login.dto';
+import { JwtStrategy } from '../jwt.strategy';
 
 jest.mock('../../aws/aws-cognito.service.ts');
 
@@ -14,7 +15,7 @@ describe('AuthService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [AwsModule],
-      providers: [AuthService],
+      providers: [AuthService, JwtStrategy],
     }).compile();
 
     service = module.get<AuthService>(AuthService);
