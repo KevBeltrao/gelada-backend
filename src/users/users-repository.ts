@@ -18,4 +18,10 @@ export class UsersRepository {
     const newUser = new this.userModel(userData);
     return await newUser.save();
   }
+
+  async getUserByEmail(email: string): Promise<User> {
+    const user = await this.userModel.findOne({ email });
+
+    return user;
+  }
 }

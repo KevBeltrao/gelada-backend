@@ -1,15 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-
-export interface User {
-  readonly _id: string;
-  readonly email: string;
-  name: string;
-  phone: string;
-}
-
-export class UserSwagger {
-  @ApiProperty({ type: String, description: '_id' })
-  _id: string;
+import { CognitoUser } from 'amazon-cognito-identity-js';
+export class User extends CognitoUser {
   @ApiProperty({ type: String, description: 'email' })
   email: string;
   @ApiProperty({ type: String, description: 'name' })
