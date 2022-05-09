@@ -26,6 +26,8 @@ API made with NestJS, TypeScript and MongoDB. The goal is to help people managin
 - [Figma](https://www.figma.com/file/j2VInCxyhtgkXQpdJRzr6z/App-Peladas?node-id=0%3A1)
 - [Apresentação 1ª iteração](https://docs.google.com/presentation/d/18Q6ENGWPCqZM74-Vfw8abl4ybFOzsjsmEScZczi0FyY/edit#slide=id.gfa0a2cd056_0_0)
 
+- [Modelo ER](https://drive.google.com/drive/folders/1f49zsbrTqMNep6IGWR1rWUsVmTQrqBdF?usp=sharing)
+
   
 
 ## Requirements ⚙️
