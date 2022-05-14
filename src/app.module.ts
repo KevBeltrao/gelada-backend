@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AwsModule } from './aws/aws.module';
 import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
+import { MatchesModule } from './matches/matches.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { AppController } from './app.controller';
     UsersModule,
     AuthModule,
     AwsModule,
+    MatchesModule,
   ],
   controllers: [AppController],
   providers: [],
