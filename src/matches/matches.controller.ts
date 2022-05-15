@@ -14,7 +14,7 @@ export class MatchesController {
 
   @Post()
   @ApiOperation({ summary: 'Register match' })
-  @ApiCreatedResponse({ description: 'match register', type: Match })
+  @ApiCreatedResponse({ description: 'Match registered', type: Match })
   @ApiBody({ type: Match })
   public async create(@Body() matchData: Match): Promise<Match> {
     return await this.matchesService.createMatch(matchData);
@@ -22,7 +22,7 @@ export class MatchesController {
 
   @Get()
   @ApiOperation({ summary: 'List matches' })
-  @ApiOkResponse({ description: 'List matches', type: [Match] })
+  @ApiOkResponse({ description: 'Matches listed', type: [Match] })
   public async list(): Promise<Match[]> {
     return await this.matchesService.listMatches();
   }
