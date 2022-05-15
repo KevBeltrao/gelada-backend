@@ -4,6 +4,7 @@ import { MatchesService } from './matches.service';
 import { MatchesRepository } from './matches.repository';
 
 @Module({
+  imports: [MatchesModule],
   controllers: [MatchesController],
   providers: [MatchesService, MatchesRepository],
 })
