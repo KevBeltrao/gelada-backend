@@ -1,8 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { MongooseModule } from '@nestjs/mongoose';
+
 import { MatchesService } from '../matches.service';
 import { UsersModule } from '../../users/users.module';
 import { MatchesRepository } from '../matches.repository';
-import { MongooseModule } from '@nestjs/mongoose';
 import { rootDatabaseTestModule } from '../../test-utils/database/database-test-module';
 import { MatchSchema } from '../interfaces/match.schema';
 
