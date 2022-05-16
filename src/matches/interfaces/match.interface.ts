@@ -6,8 +6,8 @@ export class Match {
   goalsA: number;
   @ApiProperty({ type: Number, description: 'goalsB' })
   goalsB: number;
-  @ApiProperty({ type: mongoose.Schema.Types.ObjectId, description: 'idOwner' })
-  idOwner: mongoose.Schema.Types.ObjectId;
+  @ApiProperty({ type: mongoose.Schema.Types.ObjectId, description: 'ownerId' })
+  ownerId: mongoose.Schema.Types.ObjectId;
   @ApiProperty({ type: Boolean, description: 'isActive' })
   isActive: boolean;
 }

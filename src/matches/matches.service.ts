@@ -1,23 +1,29 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { UsersRepository } from '../users/users-repository';
 import { Match } from './interfaces/match.interface';
 import { MatchesRepository } from './matches.repository';
 
 @Injectable()
 export class MatchesService {
-  constructor(private matchesRepository: MatchesRepository) {}
+  constructor(
+    private matchesRepository: MatchesRepository,
+    private userRepository: UsersRepository,
+  ) {}
 
-  async createMatch(matchData: Match): Promise<Match> {
+  async createMatch(email: string): Promise<Match> {
     try {
-      const newMatch = await this.matchesRepository.createMatch(matchData);
+      const user = await this.userRepository.getUserByEmail(email);
+      const newMatch = await this.matchesRepository.createMatch(user._id);
       return newMatch;
     } catch (error) {
       throw new BadRequestException(error);
     }
   }
 
-  async listMatches(): Promise<Match[]> {
+  async listMatches(email: string): Promise<Match[]> {
     try {
-      return await this.matchesRepository.listMatches();
+      const user = await this.userRepository.getUserByEmail(email);
+      return await this.matchesRepository.listMatches(user._id);
     } catch (error) {
       throw new BadRequestException(error);
     }
