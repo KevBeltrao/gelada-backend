@@ -7,6 +7,8 @@ import { MatchesRepository } from '../matches.repository';
 import { rootDatabaseTestModule } from '../../test-utils/database/database-test-module';
 import { MatchSchema } from '../interfaces/match.schema';
 
+jest.mock('../matches.repository.ts');
+
 describe('MatchesService', () => {
   let service: MatchesService;
 
