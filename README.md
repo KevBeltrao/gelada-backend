@@ -28,6 +28,7 @@ API made with NestJS, TypeScript and MongoDB. The goal is to help people managin
 
 - [Modelo ER](https://drive.google.com/drive/folders/1f49zsbrTqMNep6IGWR1rWUsVmTQrqBdF?usp=sharing)
 
+- [Notion](https://gelada.notion.site/966a1192d1ad4e09a915decd21a371ea?v=c5d49554efde452e8ba1aab865f58c1b)
   
 
 ## Requirements ⚙️
